@@ -57,19 +57,21 @@
 // async - code execution does not wait for previous one or any task , task can be sheduled to run later, while rest proge=ram continues
 // if there is any async task in call stack , it shedules the callback in macro task queue, and the call backs while after the synchronius tast are complete , 
 // then event loop selet tasks from micro/marco task CountQueuingStrategy, and 
-// Web APIs (Browser Help)
-// console.log("start");
 
+// Web APIs (Browser Help)
+
+// console.log("start");
 // setTimeout(() => {
 //     console.log("async(macro-task)");
 // }, 1000);
-
 // Promise.resolve().then(()=>console.log("micro-task"));
+
 // priority ->  call Stack empty?
 //                     ↓
 //             Microtask Queue empty?
 //                     ↓
 //             Macrotask Queue
+// MICRO TASKS call backs before MACRO TASKS
             
 // console.log("end");
 // output: Start, async(macro-task), micro-task, end 
