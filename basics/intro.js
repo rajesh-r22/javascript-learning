@@ -89,7 +89,30 @@
 //  components
 //  Call-stack, heap memory, web Apis, call back queues, microtask queue , event loop
 
- 
+//  - Call Stack → where synchronous code runs line by line.
+// - Event Loop → the traffic controller that checks if the stack is empty.
+// - Microtask Queue (orange) → contains tasks like Promise.then, queueMicrotask.
+// - Macrotask Queue (blue) → contains tasks like setTimeout, setInterval.
+// - Execution Order:
+// - Run all synchronous code in the stack.
+// - Empty the microtask queue completely.
+// - Then run one macrotask.
+// - Repeat the cycle.
+
+// console.log("Start");
+
+// setTimeout(() => console.log("Macrotask"), 0);
+
+// Promise.resolve().then(() => console.log("Microtask"));
+
+// console.log("End");
+
+// output order-   Start
+//                 End
+//                 Microtask
+//                 Macrotask
+
+
 
 
 
