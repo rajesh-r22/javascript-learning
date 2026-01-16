@@ -84,6 +84,10 @@
 // Browser handles them.
 // JS bolta hai: “Tu handle kar, mai aage badhta hoon”.
 
+// EVENT-LOOP(core of js)
+// js is single threaded, runs one thing at a Time
+//  components
+//  Call-stack, heap memory, web Apis, call back queues, microtask queue , event loop
 
  
 
