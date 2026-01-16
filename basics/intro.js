@@ -112,12 +112,82 @@
 //                 Microtask
 //                 Macrotask
 
+// CALL-BACK function
+// > call back function is a simple function that you pass as an argument to another function,
+// and the another function calls it when its work is document
 
+// // callback-function
+// function greet(name){
+//     console.log("helloo "+name);
+// }
 
+// // High order function
+// function sayHiHello(callback){
+//     setTimeout(() => {
+//         callback("Rajesh Reddy");
+//     }, 1000);
+     
+// }
+// sayHiHello(greet);
+// >callback ensures code runs async task completes.
 
+// ex:simple
+//  callback-function
+// function user(goal){
+//     console.log("Hello Rajesh future "+ goal);
+// }
+// higher order function
+// function processGoal(callback){
+//     callback("Software Engineer");
+// }
+//  calling HOF with argument as callback function
+// processGoal(user);
 
+// CallBack-Hell
+// > nested callback makes code, hard to read and Maintain
+// - Callback = function passed as argument, executed later.
+// - Used in event handling, async tasks (setTimeout, API calls).
+// - Problem: Callback Hell → solved by Promises.
 
- 
+// “Callback hell happens when multiple asynchronous tasks are nested inside each other, 
+// making code unreadable. Promises and async/await solve this problem by flattening the structure.
+
+//  function step1(callback){
+//     setTimeout(() => {
+//         console.log("step1 done");
+//         callback();
+//     }, 1000);
+//  }
+//  function step2(callback){
+//     setTimeout(() => {
+//         console.log("step2 done");
+//         callback();
+//     }, 1000);
+//  }
+//  function step3(callback){
+//     setTimeout(() => {
+//         console.log("step3 done");
+//         callback();
+//     }, 1000);
+//  }
+//  function step4(callback){
+//     setTimeout(() => {
+//         console.log("step4 done");
+//         callback();
+//     }, 1000);
+//  }
+
+//   “Pyramid of Doom”.
+//  step1(()=>{
+//     step2(()=>{
+//         step3(()=>{
+//             step4(()=>{
+//                 console.log("all steps done!");
+                
+//             })
+//         })
+//     })
+//  })
  
 
 
