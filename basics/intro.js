@@ -210,3 +210,38 @@
 // Deep nesting = unmanageable
 
 // Solutions: Promises + async/await flatten the structure.
+
+// ---------------PROMISES------------------
+ 
+// Promise: A Promise is an object that represents the eventual completion or failure of an asynchronous operation.
+
+// A promise has 3 states:
+// --Pending – initial
+// --Fulfilled – resolved
+// --Rejected – failed
+
+//  Creating a promise:-
+// const promise=new Promise((resolve,reject)=>{
+//     const dataFetch=false;
+//     if(dataFetch){
+//         resolve("Data fetch, successfully done!")
+//     }else{
+//         reject("failed to fetch data,try again")
+//     }
+// });
+//  Consuming a Promise
+// promise.then((result)=>{
+//     console.log(result);
+// })
+// .catch((error)=>{
+//     console.log(error);
+// })
+// .finally(()=>{
+//     console.log("hello iam finally,i always runs if it is resolve() or reject(),hehe");
+// })
+
+// - .then() → runs on success
+// - .catch() → runs on error
+// - .finally() → runs always
+
+
