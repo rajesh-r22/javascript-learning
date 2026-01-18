@@ -244,4 +244,44 @@
 // - .catch() → runs on error
 // - .finally() → runs always
 
+// ->promise chaining <-
+
+// let promiseChain=new Promise((resolve,reject)=>{
+//     resolve();
+// })
+// promiseChain
+// .then(()=>{console.log("first");})
+// .then(()=>{console.log("second");})
+// .then(()=>{console.log("third");})   
+
+// op:-    first
+//         second
+//         third
+
+// 👉 Each .then() passes its result to the next
+// Promise.resolve(1)
+//   .then(x => x + 1)
+//   .then(x => x * 2)
+//   .then(x => console.log(x)); // 4
+
+// promise as aysnchronous function does not wait to finish previous one, 
+// in this example settimeout for sec is for 2sec and 1sec for third, as we call the promise, code execution goes like-> first, third , second
+// as third .then() executes before second , 
+// let promiseChain=new Promise((resolve,reject)=>{
+//     resolve();
+// })
+
+// promiseChain
+// .then(()=>{console.log("first");})
+// .then(()=> {
+//     setTimeout(() => {
+//       console.log("second");  
+//     }, 2000);
+// })
+// .then(()=>{
+//     setTimeout(() => {
+//       console.log("third");  
+//     }, 1000);
+// }) 
+
 
