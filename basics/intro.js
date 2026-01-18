@@ -1,194 +1,212 @@
-//JAVASCRIPT - javascript is a programming language used to make websites interactive(logic,behavior, data handing)
+// JavaScript Fundamentals
+// JavaScript - A programming language used to make websites interactive (logic, behavior, data handling).
 
-// VARIABLES - variable is a container to store data.
-// ex:- var , let , const
-// var : var is  FUNCTION-SCOPE, and unsafe to use, causes bugs,reassigning /re-declaring property is dangerous .
+// Variables
+// Variables are containers to store data.
+
+// var: FUNCTION-SCOPED, unsafe to use, causes bugs. Allows re-declaring/reassigning.
+
+// javascript
 // var x = 10;
-// var x = 20; // allowed (problem)
+// var x = 20; // Allowed (problematic)
+// let: BLOCK-SCOPED, safe to use. Can reassign, cannot re-dedeclare.
 
-// let :let is safe to use , it is BLOCK-SCOPE, can be reassign , but not re-declare
-// let num= 10;
-// console.log(num);
-// num=30;
-// console.log(num);
-// let num=10 //gives compile time error
+// javascript
+// let num = 10;
+// console.log(num); // 10
+// num = 30;
+// console.log(num); // 30
+// let num = 10; //  SyntaxError
+// const: BLOCK-SCOPED, cannot reassign (but objects/arrays can be mutated).
 
-// const :const is also safe to use , BLOCK-SCOPED, but cannot reassign value
+// javascript
+// const PI = 3.14;
+// PI = 3.14159; // ❌ TypeError
+// Interview Q: What's the difference between var, let, and const?
+// Ans: Scope + reassignment behavior (as above).
 
-// closure: a function that remember TouchEvent, variables of outer function, even after outer function is over OR from its lexical environment
-// function outer(){
-//     let count=0;
-//     return function inner(){
+// Closures
+// A function that remembers variables from its outer (lexical) environment, even after the outer function finishes.
+
+// javascript
+// function outer() {
+//     let count = 0;
+//     return function inner() {
 //         count++;
 //         return count;
-//     }
+//     };
 // }
-// //  best practice outer funtion ko variable me store karna , bqz wo outter ko yaad rakhega 
-// const counter=outer();
-// console.log(counter());
-// console.log(counter());
-// console.log(counter());
 
-// // idr hum direct outer function ko call kareng etoh sirf inner function return hoyega !
-// console.log(outer());
+//  Best practice: Store outer function in variable
+// const counter = outer();
+// console.log(counter()); // 1
+// console.log(counter()); // 2
+// console.log(counter()); // 3
 
-// // Agar hum direct outer function ko call kare do paren ()() ke sath toh first() inner return kare ga, second() inner fucntion ki value return kare ga aur hum ise print karware 
-// console.log(outer()());
+//  Direct call returns function only
+// console.log(outer()); // [Function: inner]
 
-// - What’s the difference between execution context and lexical environment?
-// 👉 Execution context is created at runtime (when function runs). Lexical environment is created at definition time (when function is written).
-// - Why are closures powerful?
-// 👉 They allow private variables and stateful functions.
+//  Double call executes immediately
+// console.log(outer()()); // 1
+// Interview Q: Create a private counter using closure.
 
-// 🔥 Revision hack:
-// - Execution Context = runtime box
-// - Lexical Environment = definition box + parent link
-// - Closure = magic key that remembers the box even after it’s closed
+// javascript
+// function createCounter() {
+//     let count = 0;
+//     return {
+//         increment: () => ++count,
+//         decrement: () => --count,
+//         getCount: () => count
+//     };
+// }
+// const counter = createCounter();
+// console.log(counter.increment()); // 1
+// console.log(counter.getCount()); // 1
 
-//  SYNCHRONOUS V/S ASYNCHRONOUS
-// sync - code runs task by task, next task waits until the previous task complets its execution
-//  console.log("A");
-//  console.log("B");
-//  console.log("C");
-//A
-//B
-//C , here tasks are executing line by line
+// Key Differences:
+// Execution Context: Created at runtime (when function runs)
 
-// async - code execution does not wait for previous one or any task , task can be sheduled to run later, while rest proge=ram continues
-// if there is any async task in call stack , it shedules the callback in macro task queue, and the call backs while after the synchronius tast are complete , 
-// then event loop selet tasks from micro/marco task CountQueuingStrategy, and 
+// Lexical Environment: Created at definition time (when function written)
 
-// Web APIs (Browser Help)
+// Closures: Powerful because they enable private variables + stateful functions
 
-// console.log("start");
-// setTimeout(() => {
-//     console.log("async(macro-task)");
-// }, 1000);
-// Promise.resolve().then(()=>console.log("micro-task"));
+// Revision Hack:
 
-// priority ->  call Stack empty?
-//                     ↓
-//             Microtask Queue empty?
-//                     ↓
-//             Macrotask Queue
-// MICRO TASKS call backs before MACRO TASKS
-            
-// console.log("end");
-// output: Start, async(macro-task), micro-task, end 
-// Things like:
-// setTimeout
-// fetch
-// DOM events
+// text
+// Execution Context = runtime box
+// Lexical Environment = definition box + parent link  
+// Closure = magic key that remembers the box even after it's closed
 
-// ❗ They are NOT JS
-// Browser handles them.
-// JS bolta hai: “Tu handle kar, mai aage badhta hoon”.
+// Synchronous vs Asynchronous
+// Sync: Code runs task-by-task. Next task waits for previous to complete.
 
-// EVENT-LOOP(core of js)
-// js is single threaded, runs one thing at a Time
-//  components
-//  Call-stack, heap memory, web Apis, call back queues, microtask queue , event loop
+// javascript
+// console.log("A");
+// console.log("B");
+// console.log("C"); 
+//  Output: A B C (line by line)
 
-//  - Call Stack → where synchronous code runs line by line.
-// - Event Loop → the traffic controller that checks if the stack is empty.
-// - Microtask Queue (orange) → contains tasks like Promise.then, queueMicrotask.
-// - Macrotask Queue (blue) → contains tasks like setTimeout, setInterval.
-// - Execution Order:
-// - Run all synchronous code in the stack.
-// - Empty the microtask queue completely.
-// - Then run one macrotask.
-// - Repeat the cycle.
+// Async: Code doesn't wait. Tasks scheduled to run later while program continues.
 
+// javascript
 // console.log("Start");
-
 // setTimeout(() => console.log("Macrotask"), 0);
-
 // Promise.resolve().then(() => console.log("Microtask"));
-
 // console.log("End");
 
-// output order-   Start
-//                 End
-//                 Microtask
-//                 Macrotask
+//  Output:
+//  Start
+//  End  
+//  Microtask ✅ (microtasks first)
+//  Macrotask ✅
+// Priority Order:
 
-// CALL-BACK function
-// > call back function is a simple function that you pass as an argument to another function,
-// and the another function calls it when its work is document
+// Call Stack empty?
 
-// // callback-function
-// function greet(name){
-//     console.log("helloo "+name);
+// Microtask Queue empty?
+
+// Macrotask Queue
+
+// Interview Q: Why does setTimeout(fn, 0) not run immediately?
+// Ans: Even with 0ms, it goes to macrotask queue (after microtasks + sync code).
+
+// Event Loop Components
+// JS is single-threaded but appears multi-threaded:
+
+// text
+// Call Stack → Sync code runs line-by-line
+// Heap → Stores variables/objects
+// Web APIs → Browser handles (setTimeout, fetch, DOM events)
+// Microtask Queue → Promise.then(), queueMicrotask()
+// Macrotask Queue → setTimeout(), setInterval()
+// Event Loop → Traffic controller
+// Execution Order:
+
+// Run all synchronous code
+// Empty microtask queue completely
+// Run one macrotask
+// Repeat
+
+// Callbacks
+// Callback: Function passed as argument, executed later.
+
+// javascript
+//  Callback function
+// function greet(name) {
+//     console.log("Hello " + name);
 // }
 
-// // High order function
-// function sayHiHello(callback){
+//  Higher-order function  
+// function sayHi(callback) {
 //     setTimeout(() => {
 //         callback("Rajesh Reddy");
 //     }, 1000);
-     
 // }
-// sayHiHello(greet);
-// >callback ensures code runs async task completes.
+// sayHi(greet); // Hello Rajesh Reddy (after 1s)
+// Simple Example:
 
-// ex:simple
-//  callback-function
-// function user(goal){
-//     console.log("Hello Rajesh future "+ goal);
+// javascript
+// function user(goal) {
+//     console.log("Hello Rajesh, future " + goal);
 // }
-// higher order function
-// function processGoal(callback){
+// function processGoal(callback) {
 //     callback("Software Engineer");
 // }
-//  calling HOF with argument as callback function
-// processGoal(user);
+// processGoal(user); // Hello Rajesh, future Software Engineer
+// Interview Q: What's a higher-order function?
+// Ans: Function that takes another function as argument OR returns a function.
 
-// CallBack-Hell
-// > nested callback makes code, hard to read and Maintain
-// - Callback = function passed as argument, executed later.
-// - Used in event handling, async tasks (setTimeout, API calls).
-// - Problem: Callback Hell → solved by Promises.
+// Callback Hell (Pyramid of Doom)
+// Nested callbacks make code unreadable:
 
-// “Callback hell happens when multiple asynchronous tasks are nested inside each other, 
-// making code unreadable. Promises and async/await solve this problem by flattening the structure.
+//  Step 1: simulate async task
+// function step1(callback) {
+//   setTimeout(() => {
+//     console.log("Step 1 done");
+//     callback();
+//   }, 1000);
+// }
 
-//  function step1(callback){
+// Step 2
+// function step2(callback) {
+//   setTimeout(() => {
+//     console.log("Step 2 done");
+//     callback();
+//   }, 1000);
+// }
+
+// Step 3
+// function step3(callback) {
+//   setTimeout(() => {
+//     console.log("Step 3 done");
+//     callback();
+//   }, 1000);
+// }
+// step 4
+// function step4(callback){
 //     setTimeout(() => {
-//         console.log("step1 done");
+//         console.log("step 4 done");
 //         callback();
 //     }, 1000);
-//  }
-//  function step2(callback){
-//     setTimeout(() => {
-//         console.log("step2 done");
-//         callback();
-//     }, 1000);
-//  }
-//  function step3(callback){
-//     setTimeout(() => {
-//         console.log("step3 done");
-//         callback();
-//     }, 1000);
-//  }
-//  function step4(callback){
-//     setTimeout(() => {
-//         console.log("step4 done");
-//         callback();
-//     }, 1000);
-//  }
+// }
 
-//   “Pyramid of Doom”.
-//  step1(()=>{
-//     step2(()=>{
-//         step3(()=>{
-//             step4(()=>{
-//                 console.log("all steps done!");
-                
-//             })
-//         })
-//     })
-//  })
- 
+//  Nested callbacks = Callback Hell
+//  javascript
+// step1(() => {
+//     step2(() => {
+//         step3(() => {
+//             step4(() => {
+//                 console.log("All steps done!");
+//             });
+//         });
+//     });
+// });
+// Problems:
 
+// Hard to read/maintain
 
+// Error handling nightmare
 
+// Deep nesting = unmanageable
+
+// Solutions: Promises + async/await flatten the structure.
