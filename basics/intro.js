@@ -283,5 +283,38 @@
 //       console.log("third");  
 //     }, 1000);
 // }) 
+// output: first, third, second 
 
 
+//  Callback Hell → Promise Version
+// function step1(){
+//     return new Promise((resolve)=>{
+//         setTimeout(() => {
+//             console.log("step1 completed");
+//             resolve();
+//         }, 1000);
+//     })
+// }
+// function step2(){
+//     return new Promise((resolve)=>{
+//         setTimeout(() => {
+//             console.log("step2 completed");
+//             resolve();
+//         }, 1000);
+//     })
+// }
+// function step3(){
+//     return new Promise((resolve)=>{
+//         setTimeout(() => {
+//             console.log("step3 completed");
+//             resolve();
+//         }, 1000);
+//     })
+// }
+
+// step1()
+// .then(step2())
+// .then(step3())
+// .then(()=>console.log("All steps completed !"))
+
+// this is more cleaner then call back hell
