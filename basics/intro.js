@@ -318,3 +318,35 @@
 // .then(()=>console.log("All steps completed !"))
 
 // this is more cleaner then call back hell
+
+// -> ERROR-HANDLING <-
+
+// Promise.resolve("success")
+// .then(()=>console.log("wow success!"))
+// .catch((err)=>{console.log("error"+err)})
+// .then(()=>console.log("wow , 
+// success after err"))
+
+// Promise.reject("error!")
+// .then(()=> console.log("success"))
+// .catch(err=> console.log("Caught:",err))
+// .then(()=>console.log("continue after error"))
+
+// Promise.all
+
+// const p1 = Promise.resolve("One");
+// const p2 = Promise.resolve("Two");
+// const p3 = Promise.resolve("Three");
+
+// Promise.all([p1, p2, p3]).then(values => console.log(values));
+
+
+// 👉 Output: [ "One", "Two", "Three" ]
+
+//    Interview Quick Notes
+// - Callback Hell → solved by Promises.
+// - Microtask vs Macrotask → Promises (microtask) run before setTimeout (macrotask).
+// - Promise.all → waits for all, fails if one fails.
+// - Promise.race → first settled wins.
+// - Error handling → always use .catch.
+
