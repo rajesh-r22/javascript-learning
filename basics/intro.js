@@ -431,3 +431,63 @@
 // async/await = Promise ka dost 
 // setTimeout = Callback ka dost
 // Promise banao → phir await karo 
+
+// yeh uper ke sare cases resolve ke the , if promise reject hua nd humne ,async/await use kare hai toh humko ,
+// error aaye ga aur await wai hi karta rahe jayeg,
+
+// error handling karna important hai async/await meee nhi toh await ke baad ka code  chalega hi nhi
+// javascript
+
+
+// function printUserDetails(){
+//     return new Promise((resolve, reject) => { 
+//         setTimeout(() => {
+//             console.log("name:Rajesh, role: non-IT");
+//             reject("Error: User not found!");  // ❌ Reject kiya
+//         }, 2000);
+//     });
+// }
+// async function getData(){
+//     try {
+//         console.log("fetching data...");
+//         const response = await printUserDetails();
+//         console.log("fetching complete !");
+//     } catch(error) {
+//         console.log(error+"rajesh non-it nhi jayegaaaaaa");  // ✅ Handle ho jayega
+//     }
+// }
+// getData()
+
+// Output:
+// fetching data...
+// name:Rajesh...
+// Error mila: Error: User not found!
+
+// async function getData(){
+//     console.log("fetching data...");
+//     const response = await printUserDetails();  // ❌ Yahan error aayega
+//     console.log("fetching complete !");        // Ye kabhi chalega nahi
+// }
+ 
+// Output:
+// fetching data...           (0s)
+// name:Rajesh...             (2s baad)  
+// Uncaught (in promise) Error: User not found!
+// "fetching complete !" print nahi hoga!
+
+// 2 Tarike Handle Karo:
+// 1. Try-Catch (Recommended) ✅
+
+// 2. .catch() use karo
+// javascript
+// getData().catch(error => {
+//     console.log("Error:", error);
+// });
+
+// Golden Rule:
+// text
+// Promise.resolve() → await success 
+// Promise.reject() → await ERROR THROW! 😱
+
+// try/catch ya .catch() MUST lagao!
+// Reject = Exception. Handle karna padega! 🚨
