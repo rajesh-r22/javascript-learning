@@ -265,8 +265,10 @@
 //   .then(x => console.log(x)); // 4
 
 // promise as aysnchronous function does not wait to finish previous one, 
-// in this example settimeout for sec is for 2sec and 1sec for third, as we call the promise, code execution goes like-> first, third , second
-// as third .then() executes before second , 
+// in this example settimeout for sec is for 2sec and 1sec for third, as we call the promise, 
+// code execution goes like-> first, third , second
+// as third .then() executes before second ,
+
 // let promiseChain=new Promise((resolve,reject)=>{
 //     resolve();
 // })
@@ -313,8 +315,8 @@
 // }
 
 // step1()
-// .then(step2())
-// .then(step3())
+// .then(step2)
+// .then(step3)
 // .then(()=>console.log("All steps completed !"))
 
 // this is more cleaner then call back hell
