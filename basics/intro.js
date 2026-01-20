@@ -352,3 +352,82 @@
 // - Promise.race → first settled wins.
 // - Error handling → always use .catch.
 
+// -> Async- Await <-
+
+// async/await is the syntactic sugar build on top of promises.
+// async keyword -> marks a function that always return a promise
+// await  keyword -> pauses the execution until the promise resolve
+
+// function fetchData(){
+//     return new Promise(resolve=>{
+//         setTimeout(() => {
+//             console.log("Data loaded !");
+//             resolve()
+//         }, 2000);
+//     })
+// }
+
+// async function getData( ) {
+//     console.log("loading....");
+//     const response=await fetchData();
+//     setTimeout(() => {
+//         console.log("work done..");
+//     }, 1000);
+// }
+// getData();
+// console.log("wait..");
+
+
+// NOTE : without wraping in promise , settimeout function will be like call back ki tarha hi kaam karega
+
+// function printUserDetails(){
+//     setTimeout(() => {           // ❌ Ye sirf callback hai
+//         console.log("name:Rajesh...");
+//     }, 2000);
+//     // ❌ Promise return NHI kiya! undefined return hoga
+// }
+// async function getData(){
+//     console.log("fetching data...");
+    
+//     const response= await printUserDetails();// undefined await kar rahe ho
+// }
+// getData();
+
+// 1. "fetching data..." print ✅ (turant)
+// 2. printUserDetails() call → setTimeout schedule ho gaya (2s baad chalega)
+// 3. undefined return → await turant complete 
+// 4. Function khatam (koi wait nahi hua!)
+// 5. 2s baad → "name:Rajesh..." print
+
+
+
+// async/await ke liye promise chahiye raheta tabhi await wait karega resove hone tak ka aur execution pause karega
+
+// function printUserDetails(){
+//     return new Promise(resolve=>{ 
+//         setTimeout(() => {
+//             console.log("name:Rajesh, role: Software Engineer");
+//             resolve()
+//         }, 2000);
+//     });
+// }
+
+// async function getData(){
+//     console.log("fetching data...");
+//     const response= await printUserDetails();
+//     console.log("fetching complete !");
+// }
+// getData();
+
+
+// getData() call → 
+// 1. "fetching data..." print ✅ (turant, sync)
+// 2. printUserDetails() → Promise return (pending) 
+// 3. await → function **pause** ho jata 😴
+// 4. 2s baad → "name:Rajesh..." print + resolve() ✅
+// 5. Promise resolve → await complete → **resume**
+// 6. "fetching complete !" print ✅
+
+// async/await = Promise ka dost 
+// setTimeout = Callback ka dost
+// Promise banao → phir await karo 
