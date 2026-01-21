@@ -421,12 +421,12 @@
 
 
 // getData() call → 
-// 1. "fetching data..." print ✅ (turant, sync)
+// 1. "fetching data..." print  (turant, sync)
 // 2. printUserDetails() → Promise return (pending) 
-// 3. await → function **pause** ho jata 😴
-// 4. 2s baad → "name:Rajesh..." print + resolve() ✅
+// 3. await → function **pause** ho jata 
+// 4. 2s baad → "name:Rajesh..." print + resolve() 
 // 5. Promise resolve → await complete → **resume**
-// 6. "fetching complete !" print ✅
+// 6. "fetching complete !" print 
 
 // async/await = Promise ka dost 
 // setTimeout = Callback ka dost
@@ -443,7 +443,7 @@
 //     return new Promise((resolve, reject) => { 
 //         setTimeout(() => {
 //             console.log("name:Rajesh, role: non-IT");
-//             reject("Error: User not found!");  // ❌ Reject kiya
+//             reject("Error: User not found!");  // Reject kiya
 //         }, 2000);
 //     });
 // }
@@ -453,7 +453,7 @@
 //         const response = await printUserDetails();
 //         console.log("fetching complete !");
 //     } catch(error) {
-//         console.log(error+"rajesh non-it nhi jayegaaaaaa");  // ✅ Handle ho jayega
+//         console.log(error+"rajesh non-it nhi jayegaaaaaa");  // Handle ho jayega
 //     }
 // }
 // getData()
@@ -465,7 +465,7 @@
 
 // async function getData(){
 //     console.log("fetching data...");
-//     const response = await printUserDetails();  // ❌ Yahan error aayega
+//     const response = await printUserDetails();  // Yahan error aayega
 //     console.log("fetching complete !");        // Ye kabhi chalega nahi
 // }
  
@@ -476,7 +476,7 @@
 // "fetching complete !" print nahi hoga!
 
 // 2 Tarike Handle Karo:
-// 1. Try-Catch (Recommended) ✅
+// 1. Try-Catch (Recommended) 
 
 // 2. .catch() use karo
 // javascript
@@ -487,10 +487,10 @@
 // Golden Rule:
 // text
 // Promise.resolve() → await success 
-// Promise.reject() → await ERROR THROW! 😱
+// Promise.reject() → await ERROR THROW! 
 
 // try/catch ya .catch() MUST lagao!
-// Reject = Exception. Handle karna padega! 🚨
+// Reject = Exception. Handle karna padega! 
 
 
 // Sequential vs Parallel (Visual)
