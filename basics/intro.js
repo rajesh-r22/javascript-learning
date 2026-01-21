@@ -491,3 +491,53 @@
 
 // try/catch ya .catch() MUST lagao!
 // Reject = Exception. Handle karna padega! 🚨
+
+
+// Sequential vs Parallel (Visual)
+// Sequential (Ek ke baad ek)
+// javascript
+// const user = await fetchUser();     // 2s
+// const posts = await fetchPosts();   // +2s  
+// const profile = await fetchProfile(); // +2s
+// Total: 6 seconds 😴
+// ✅ Parallel (Sab ek saath)
+// javascript
+// const [user, posts, profile] = await Promise.all([
+//     fetchUser(),     // 2s
+//     fetchPosts(),    // 2s  
+//     fetchProfile()   // 2s
+// ]);
+// Total: 2 seconds only! 
+
+// Real Life Example:
+// text
+// Race track mein 3 dost:
+//  Sequential: Raj pehle daudega (2s) → Anil (2s) → Sunny (2s) = 6s
+// ✅ Parallel: Sab 3 ek saath daudenge = 2s mein result!
+// Code Demo:
+// javascript
+// 3 APIs - har ek 2s lagti hai
+// async function parallelDemo() {
+//     console.time("Parallel");
+    
+//     const [user, posts, comments] = await Promise.all([
+//         fetchUser(),      // Start: 0s
+//         fetchPosts(),     // Start: 0s  
+//         fetchComments()   // Start: 0s
+//     ]);
+    
+//     console.timeEnd("Parallel");  // 2s (fastest promise)
+    
+//     return { user, posts, comments };
+// }
+
+// Timeline:
+// Time 0s:   Sab 3 promises START 
+// Time 2s:   Sab 3 promises COMPLETE → Results mil gaye!
+
+// Key Rules:
+// 1. Promise.all([p1, p2, p3]) = Sab START ek saath
+// 2. Wait karega = Sabse slow promise tak  
+// 3. 1 fail = Total fail (Promise.all)
+// 4. Sab success = Array of results same order mein
+// Promise.all() = Teamwork! Sab apna kaam parallel chalao, ek saath finish karo! 🎯
