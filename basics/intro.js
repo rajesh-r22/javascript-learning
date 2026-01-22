@@ -541,3 +541,72 @@
 // 3. 1 fail = Total fail (Promise.all)
 // 4. Sab success = Array of results same order mein
 // Promise.all() = Teamwork! Sab apna kaam parallel chalao, ek saath finish karo! 🎯
+
+// -> PROTOTYPE & PROTOTYPE CHAINING <-
+// prototype is a  object from which other objects inherit properties.
+
+// JAVASCRIPT is prototype based not class based 
+// JavaScript = Prototypal Inheritance
+// Java (C#) = Classical Inheritance (Classes)
+// "JavaScript prototype-based hai. ES6 classes sirf syntactic sugar hai 
+// jo constructor functions + prototype inheritance ko easy banati hai!"
+
+
+// let user={
+//     name:"raj"
+// }
+// console.log(user);
+// console.log(user.toString())
+
+// console.log(user.age); //undefined aayega bqz na toh object ke pass hai yeh property nahi  prototype ke pass hai yeh property
+ 
+
+
+// yaha par dekho tostring() method hai hi nhi user ke pass but wo apne prototype ke pass check kara usko inherit karliya
+// let user = {name: "raj"};
+
+//  1. Direct property nahi hai
+// console.log('toString' in user);                    // true (chain check)
+// console.log(user.hasOwnProperty('toString'));       // false
+
+//  2. Prototype se aaya hai
+// console.log('toString' in Object.prototype);        // true
+// console.log(Object.prototype.hasOwnProperty('toString')); // true
+
+
+// let user = { name: "raj" };
+// Line 1: console.log(user.__proto__ === Object.prototype) //true
+// user.__proto__ → ye user object ka "parent" hai
+// Object.prototype → ye sab objects ka ultimate parent hai
+
+// user.__proto__ === Object.prototype → true! 
+// (MTLB user ka direct parent hi Object.prototype hai)
+
+// Line 2: console.log(user.__proto__.toString)
+// user.__proto__ = Object.prototype
+// user.__proto__.toString = Object.prototype.toString
+
+// Output: ƒ toString()  // Function dikhega!
+
+// Visual Chain:
+// user = {name: "raj"}
+//        ↓ __proto__
+// Object.prototype = {toString(), hasOwnProperty(), ...}
+//        ↓ __proto__ 
+// null
+
+// Real Example Console Mein:
+// javascript
+// let user = {name: "raj"};
+
+// // Ye check karo
+// user.toString();        // "[object Object]" ✅ (Object.prototype se aaya)
+// user.name;             // "raj" ✅ (user object se direct)
+// user.age;              // undefined ❌ (kisi chain mein nahi mila)
+// Simple Analogy:
+// 📱 Tere paas phone hai (user)
+// 📚 Phone mein manual nahi hai, lekin box mein hai (Object.prototype)
+// 📦 Box check kiya → Manual mili → Padh liya!
+
+// user.__proto__ = Box (jisme manual hai)
+// Summary: user.__proto__ = user ka parent object. Usme toString() method hai! 🎯
