@@ -623,4 +623,33 @@
 
 // p2.sayHello();
 
+// Example with Class
+
+class user{
+    constructor(name){
+        this.name =name;
+    }
+    
+    sayHello(){
+        console.log("hello "+ this.name);
+    }
+}
+
+const u2=new user("Dinesh");
+u2.sayHello();
+
+console.log('sayHello' in user);
+
+// const u2 = new User("Dinesh");
+
+//  1. Instance level (chain check)
+// console.log('sayHello' in u2);           // true ✅
+
+// 2. Prototype level  
+// console.log('sayHello' in User.prototype); // true ✅
+
+// 3. Constructor level  
+// console.log('sayHello' in User);         // false ❌
+
+
 
