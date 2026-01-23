@@ -610,3 +610,17 @@
 
 // user.__proto__ = Box (jisme manual hai)
 // Summary: user.__proto__ = user ka parent object. Usme toString() method hai! 🎯
+
+// Prototypal Inheritance
+// function person(name){
+//     this.name=name
+// }
+
+// person.prototype.sayHello=function (){
+//     console.log("hello " + this.name);
+// }
+// const p2 =new person("rajesh");
+
+// p2.sayHello();
+
+
