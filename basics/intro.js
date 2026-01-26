@@ -499,8 +499,8 @@
 // const user = await fetchUser();     // 2s
 // const posts = await fetchPosts();   // +2s  
 // const profile = await fetchProfile(); // +2s
-// Total: 6 seconds 😴
-// ✅ Parallel (Sab ek saath)
+// Total: 6 seconds 
+// Parallel (Sab ek saath)
 // javascript
 // const [user, posts, profile] = await Promise.all([
 //     fetchUser(),     // 2s
@@ -513,7 +513,7 @@
 // text
 // Race track mein 3 dost:
 //  Sequential: Raj pehle daudega (2s) → Anil (2s) → Sunny (2s) = 6s
-// ✅ Parallel: Sab 3 ek saath daudenge = 2s mein result!
+//  Parallel: Sab 3 ek saath daudenge = 2s mein result!
 // Code Demo:
 // javascript
 // 3 APIs - har ek 2s lagti hai
@@ -540,7 +540,7 @@
 // 2. Wait karega = Sabse slow promise tak  
 // 3. 1 fail = Total fail (Promise.all)
 // 4. Sab success = Array of results same order mein
-// Promise.all() = Teamwork! Sab apna kaam parallel chalao, ek saath finish karo! 🎯
+// Promise.all() = Teamwork! Sab apna kaam parallel chalao, ek saath finish karo! 
 
 // -> PROTOTYPE & PROTOTYPE CHAINING <-
 // prototype is a  object from which other objects inherit properties.
@@ -609,7 +609,7 @@
 // 📦 Box check kiya → Manual mili → Padh liya!
 
 // user.__proto__ = Box (jisme manual hai)
-// Summary: user.__proto__ = user ka parent object. Usme toString() method hai! 🎯
+// Summary: user.__proto__ = user ka parent object. Usme toString() method hai! 
 
 // Prototypal Inheritance
 // function person(name){
@@ -651,5 +651,23 @@
 // 3. Constructor level  
 // console.log('sayHello' in User);         // false 
 
+// What new does (INTERVIEW FAVORITE)
+// When you use new:
+// Creates empty object
+// Sets prototype
+// Binds .this
+// Returns object
 
+// *__proto__ vs prototype
 
+// *__proto__ is parent of object we made
+// * prototype is used for inheritence
+
+// *prototype → property of constructor
+// *__proto__ → internal link of object
+// u1.__proto__ === User.prototype // true
+
+// Are classes real in JS? No. They are syntactic sugar over prototypes.
+
+// this keyword
+// this depends on how a function is called, not where it’s written.
