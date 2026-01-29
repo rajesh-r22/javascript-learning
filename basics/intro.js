@@ -672,6 +672,8 @@
 // this keyword
 // this depends on how a function is called, not where it’s written.
 // Arrow funtion doesnt have there .this keyword
+ 
 
-// Javascript Disign-Patterns IMPORTANT
+// --> D O M <-- [Document Object Model]
+
 
