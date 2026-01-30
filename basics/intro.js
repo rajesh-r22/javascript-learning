@@ -674,6 +674,36 @@
 // Arrow funtion doesnt have there .this keyword
  
 
-// --> D O M <-- [Document Object Model]
+//* --> D O M <-- [Document Object Model]
 
+//The HTML DOM (HTML Document Object Model) is an Object Model for HTML Documents.
+// DOM represent html document as tree of nodes
 
+// <!DOCTYPE html>
+//     <html lang="en">
+//         <head>
+//             <title>Document</title>
+//         </head>
+//         <body>
+//             <p>"Hello Rajesh"</p>
+//         </body>
+//     </html>
+
+//     Document
+//  └── html (root element, lang="en")
+//       ├── head
+//       │     └── title
+//       │           └── "Document"
+//       └── body
+//             └── p
+//                   └── "Hello Rajesh"
+
+//* - Document → Sabse upar ka root hota hai, jo poore HTML ko represent karta hai.
+//* - html element → Ye root element hai, iske andar do main child hote hain: <head> aur <body>.
+// *- head element → Isme metadata hota hai (jaise title, scripts, styles). Tumhare case mein sirf <title> hai.
+// *- title element → Iska text node hai "Document". Browser tab mein ye naam dikhega.
+// *- body element → Ye actual content hota hai jo user ko page par dikhta hai.
+// *- p element → Ek paragraph node hai.
+// *- Iske andar ek text node hai "Hello Rajesh" jo browser par display hota hai.
+
+// DOM ek tree structure hai jisme har HTML tag ek node ban jaata hai, aur text bhi ek alag node hota hai.
