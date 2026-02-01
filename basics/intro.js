@@ -707,3 +707,5 @@
 // *- Iske andar ek text node hai "Hello Rajesh" jo browser par display hota hai.
 
 // DOM ek tree structure hai jisme har HTML tag ek node ban jaata hai, aur text bhi ek alag node hota hai.
+
+// practice dom with mini projects
